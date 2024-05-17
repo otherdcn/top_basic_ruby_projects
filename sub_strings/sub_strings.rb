@@ -1,13 +1,10 @@
 require 'pry-byebug'
 
 def substrings(str,dictionary)
-  [".",",","-",";",":","!","?"].each { |sym| str.gsub!(sym,"") } # eliminte all the unwanted characters/symbols
-  str_array = str.downcase.split
   substring_hash_listing = Hash.new(0)
-
-  str_array.each do |word|
+  str.downcase.delete(".,-;:!?").split.each do |word|
     dictionary.each do |substring|
-      substring_hash_listing[substring] += 1 if word.include?(substring)
+      substring_hash_listing[substring] += word.scan(substring).count if word.include?(substring)
     end
   end
   substring_hash_listing
@@ -27,6 +24,11 @@ substring_hash_listing = substrings(str,dictionary)
 puts "Dictinary listing: #{substring_hash_listing}"
 
 str = "Use chown to own then down the blown sown town!"
+puts "String: #{str}"
+substring_hash_listing = substrings(str,dictionary)
+puts "Dictinary listing: #{substring_hash_listing}"
+
+str = "iii howhowhowhow ownownownownown gogogogogogogogogogo"
 puts "String: #{str}"
 substring_hash_listing = substrings(str,dictionary)
 puts "Dictinary listing: #{substring_hash_listing}"
