@@ -2,7 +2,7 @@ require 'pry-byebug'
 
 def substrings(str,dictionary)
   substring_hash_listing = Hash.new(0)
-  str.downcase.delete(".,-;:!?").split.each do |word|
+  str.downcase.split.each do |word|
     dictionary.each do |substring|
       substring_hash_listing[substring] += word.scan(substring).count if word.include?(substring)
     end
