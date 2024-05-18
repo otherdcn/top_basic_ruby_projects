@@ -1,32 +1,25 @@
 require 'pry-byebug'
 
-def stock_picker(daily_stock_prices)
-  stock_calculations = {}
-  daily_stock_prices.each_with_index do |stock_price,day|
-    for i in daily_stock_prices[day..daily_stock_prices.size]
-      stock_calculations["calc_" + day.to_s + daily_stock_prices.find_index(i).to_s] = {
-        buy: day,
-        sell: daily_stock_prices.find_index(i),
-        profit: i - stock_price
-      }
+def stock_picker(prices)
+  greatest_profit_margin = {
+    buy_on: 0,
+    sell_on: 0,
+    profit_margin: 0
+  }
+
+  for buy_item in 0...prices.size # iterate over when to buy
+    for sell_item in buy_item...prices.size # iterate over when to sell
+      if (prices[sell_item] - prices[buy_item]) > greatest_profit_margin[:profit_margin]
+        greatest_profit_margin[:profit_margin] = prices[sell_item] - prices[buy_item]
+        greatest_profit_margin[:buy_on] = buy_item
+        greatest_profit_margin[:sell_on] = sell_item
+      end
     end
   end
 
-  greatest_profit_margin = nil
-  max_profit_value = nil
-
-  stock_calculations.each do |calc,results|
-    if max_profit_value.nil? || results[:profit] > max_profit_value
-      greatest_profit_margin = results
-      max_profit_value = results[:profit]
-    end
-  end
-
-  binding.pry
-  [greatest_profit_margin[:buy],greatest_profit_margin[:sell]]
+  [greatest_profit_margin[:buy_on],greatest_profit_margin[:sell_on]]
 end
 
-binding.pry
 week_one = stock_picker([17,3,6,9,15,8,6,1,10])
 week_two = stock_picker([32,76,22,55,22,2,34,1])
 week_three = stock_picker([33,23,1,2,7,8,24,2,4])
