@@ -1,5 +1,3 @@
-require 'pry-byebug'
-
 def stock_picker(prices)
   greatest_profit_margin = {
     buy_on: 0,
@@ -23,4 +21,3 @@ end
 week_one = stock_picker([17,3,6,9,15,8,6,1,10])
 week_two = stock_picker([32,76,22,55,22,2,34,1])
 week_three = stock_picker([33,23,1,2,7,8,24,2,4])
-
