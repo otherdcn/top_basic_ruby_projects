@@ -18,6 +18,11 @@ def stock_picker(prices)
   [greatest_profit_margin[:buy_on],greatest_profit_margin[:sell_on]]
 end
 
-week_one = stock_picker([17,3,6,9,15,8,6,1,10])
-week_two = stock_picker([32,76,22,55,22,2,34,1])
-week_three = stock_picker([33,23,1,2,7,8,24,2,4])
+test_data = [[17,3,6,9,15,8,6,1,10], [32,76,22,55,22,2,34,1], [33,23,1,2,7,8,24,2,4]]
+
+test_data.each do |stocks|
+  buy_on, sell_on = stock_picker(stocks)
+  puts "For the following stocks: #{stocks.join(", ")}"
+  print "Pick #{[buy_on, sell_on]} - "
+  puts "for a profit of $#{stocks[sell_on]} - $#{stocks[buy_on]} = $#{stocks[sell_on] - stocks[buy_on]}\n\n"
+end

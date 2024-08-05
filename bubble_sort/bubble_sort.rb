@@ -19,6 +19,9 @@ def bubble_sort(array)
   array
 end
 
-p bubble_sort([4,3,78,2,0,2])
-p bubble_sort([1,2,3,4,5])
-p bubble_sort([2,3,4,5,1])
+array_inputs = [[4,3,78,2,0,2], [1,2,3,4,5], [2,3,4,5,1]]
+
+array_inputs.each do |array|
+  puts "Before:".ljust(8) + array.to_s
+  puts "After:".ljust(8) + bubble_sort(array).to_s
+end

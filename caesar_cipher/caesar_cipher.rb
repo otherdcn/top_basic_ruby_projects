@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'pry-byebug'
 
 def caesar_cipher(str, shift_factor)
@@ -37,14 +35,14 @@ def caesar_cipher(str, shift_factor)
   cipher_array.join
 end
 
-str = 'What a string!'
-shift_factor = 5
-cipher_str = caesar_cipher(str, shift_factor)
-puts "String: #{str} ===> Shift #{shift_factor}"
-puts "Cipher: #{cipher_str}"
+test_data = {
+  one: { string: "What a string!", shift_factor: 5 },
+  two: { string: "1 2 3 4 5", shift_factor: 15 },
+  three: { string: "The quick brown fox jumps over the lazy dog.", shift_factor: 2 }
+}
 
-str = '1 2 3 4 5'
-shift_factor = 15
-cipher_str = caesar_cipher(str, shift_factor)
-puts "String: #{str} ===> Shift #{shift_factor}"
-puts "Cipher: #{cipher_str}"
+test_data.each_value do |data|
+  cipher = caesar_cipher(data[:string], data[:shift_factor])
+  puts "String: #{data[:string]} ===> Shift factor: #{data[:shift_factor]}"
+  puts "Cipher: #{cipher}\n\n"
+end

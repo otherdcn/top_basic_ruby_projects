@@ -13,22 +13,14 @@ end
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 puts "Dictionary: #{dictionary}"
 
-str = "Howdy partner, sit down! How's it going?"
-puts "String: #{str}"
-substring_hash_listing = substrings(str,dictionary)
-puts "Dictinary listing: #{substring_hash_listing}"
+test_data = [
+  "Howdy partner, sit down! How's it going?",
+  "I will stick to the permissive ASCII-like output while typing into the the STDIN",
+  "Use chown to own then down the blown sown town!",
+  "iii howhowhowhow ownownownownown gogogogogogogogogogo"
+]
 
-str = "I will stick to the permissive ASCII-like output while typing into the the STDIN"
-puts "String: #{str}"
-substring_hash_listing = substrings(str,dictionary)
-puts "Dictinary listing: #{substring_hash_listing}"
-
-str = "Use chown to own then down the blown sown town!"
-puts "String: #{str}"
-substring_hash_listing = substrings(str,dictionary)
-puts "Dictinary listing: #{substring_hash_listing}"
-
-str = "iii howhowhowhow ownownownownown gogogogogogogogogogo"
-puts "String: #{str}"
-substring_hash_listing = substrings(str,dictionary)
-puts "Dictinary listing: #{substring_hash_listing}"
+test_data.each do |string|
+  puts "\nString: #{string}"
+  puts "Dictinary Listing: #{substrings(string,dictionary)}\n\n"
+end
